@@ -10,6 +10,7 @@ To Do:
   - Email change
   - Password change
   - Ui improvements
+- Deploy to web
 
 Preview of current revision of Website
 https://github.com/user-attachments/assets/296c4eb3-2148-462d-a258-e7da2807ae3b
