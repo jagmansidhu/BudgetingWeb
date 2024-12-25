@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+label{
+    text-align: left;
+}
+
+h2{
+    margin-top: -1px;
+}
+
+.row{
+    margin: auto;
+    width: auto;
+    padding: 30px;
+}
+
+.label-container{
+    /* border: 3px solid white;*/
+    line-height: 50px;
+
+}
+
+.register-container {
+    margin: auto;
+    margin-top: 100px;
+    width: 25%;
+    /*border: 3px solid;*/
+    padding: 10px;
+    text-align: left;
+    font-size: 25px;
+    background-color: white;
+    color: black;
+    box-shadow: 0 0 10px 5px #d3d2d2;
+}
+
+
+.button{
+    border-radius: 1000px;
+    background-color: #333333;
+    color: white;
+    padding: 20px 20px;
+    margin-top: 30px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+/* Add a hover effect for buttons */
+button:hover {
+    opacity: 0.8;
+}
+
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    box-sizing: border-box;
+    font-size: 16px;
+}
