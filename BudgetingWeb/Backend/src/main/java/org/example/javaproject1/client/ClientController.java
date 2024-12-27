@@ -18,10 +18,12 @@ import java.util.Map;
 public class ClientController {
 
     private final ClientService clientService;
+    private final ClientRepository clientRepository;
 
     @Autowired
-    public ClientController(ClientService clientService) {
+    public ClientController(ClientService clientService, ClientRepository clientRepository) {
         this.clientService = clientService;
+        this.clientRepository = clientRepository;
     }
 
     //Using to see if react connected with backend
@@ -55,19 +57,39 @@ public class ClientController {
     }
 
 
-    //Changes Client information name or email
-    @PutMapping(path = "{clientId}")
-    public void updateClient(@PathVariable("clientId") Long clientId,
-                             @RequestParam(required = false) String name,
-                             @RequestParam(required = false) String email) {
-        clientService.updateClient(clientId, name, email);
+    @PutMapping(path = "/update/email/{clientId}")
+    public ResponseEntity<Client> updateEmail(@PathVariable("clientId") Long clientId,
+                                              @RequestBody Map<String, String> updates) {
+
+
+        String email = updates.get("email");
+
+        clientService.updateEmail(clientId,email);
+        Client updatedClient = clientRepository.findById(clientId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found"));
+
+        return ResponseEntity.ok(updatedClient);
+
+    }
+    @PutMapping(path = "/update/password/{clientId}")
+    public ResponseEntity<Client> updatePassword(@PathVariable("clientId") Long clientId,
+                                                 @RequestBody Map<String, String> updates) {
+
+        String password = updates.get("password");
+
+        clientService.updatePassword(clientId,password);
+        Client updatedClient = clientRepository.findById(clientId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found"));
+
+        return ResponseEntity.ok(updatedClient);
+
     }
 
     @PostMapping("/register")
     public ResponseEntity<?> registerClient(@Valid @RequestBody RegisterClientRequest request, BindingResult result) {
-        if(result.hasErrors()) {
+        if (result.hasErrors()) {
             Map<String, String> errors = new HashMap<>();
-            for(FieldError error : result.getFieldErrors()) {
+            for (FieldError error : result.getFieldErrors()) {
                 errors.put(error.getField(), error.getDefaultMessage());
             }
             return ResponseEntity.badRequest().body(errors);

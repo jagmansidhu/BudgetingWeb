@@ -51,24 +51,6 @@ public class ClientService {
         clientRepository.deleteById(clientId);
     }
 
-    @Transactional
-    public void updateClient(Long clientId, String name, String email) {
-        Client client = clientRepository.findById(clientId)
-                .orElseThrow(() -> new IllegalArgumentException("Client with id " + clientId + " does not exist"));
-
-        if (name != null && !name.isEmpty() && !Objects.equals(client.getName(), name)) {
-            client.setName(name);
-        }
-
-        if (email != null && !email.isEmpty() && !Objects.equals(client.getEmail(), email)) {
-            Optional<Client> clientOptional = clientRepository.findClientByEmail(email);
-            if (clientOptional.isPresent()) {
-                throw new IllegalArgumentException("Client with email " + email + " already exists");
-            }
-            client.setEmail(email);
-        }
-    }
-
     public Client registerClient(String name, String email, String password) {
         if (emailExists(email)) {
             throw new IllegalStateException("Email " + email + " is already registered.");
@@ -95,5 +77,28 @@ public class ClientService {
                 .orElseThrow(() -> new IllegalStateException("Client with email " + email + " does not exist"));
     }
 
+    public void updatePassword(Long clientId, String password) {
+        Client client = clientRepository.findById(clientId)
+                .orElseThrow(() -> new IllegalArgumentException("Client with id " + clientId + " does not exist"));
+
+        if (password != null && !password.isEmpty()) {
+            client.setPassword(password);
+        }
+        clientRepository.save(client);
+    }
+
+    public void updateEmail(Long clientId, String email) {
+        Client client = clientRepository.findById(clientId)
+                .orElseThrow(() -> new IllegalArgumentException("Client with id " + clientId + " does not exist"));
+
+        if (email != null && !email.isEmpty() && !Objects.equals(client.getEmail(), email)) {
+            Optional<Client> clientOptional = clientRepository.findClientByEmail(email);
+            if (clientOptional.isPresent()) {
+                throw new IllegalArgumentException("Client with email " + email + " already exists");
+            }
+            client.setEmail(email);
+        }
+        clientRepository.save(client);
+    }
 }
 
