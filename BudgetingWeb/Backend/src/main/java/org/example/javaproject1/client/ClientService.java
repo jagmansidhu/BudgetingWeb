@@ -94,5 +94,6 @@ public class ClientService {
         return clientRepository.findByEmail(email)
                 .orElseThrow(() -> new IllegalStateException("Client with email " + email + " does not exist"));
     }
+
 }
 
