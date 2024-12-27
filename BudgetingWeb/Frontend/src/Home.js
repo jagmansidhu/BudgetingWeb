@@ -11,6 +11,7 @@ import AddTransaction from "./components/AddTransaction";
 import ClientDetails from "./components/ClientDetails";  
 import ProtectedRoute from "./components/ProtectedRoute";
 import SummaryComponent from "./components/SummaryComponent";
+import ClientUpdate from "./components/ClientUpdate";
 
 const Home = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -67,6 +68,14 @@ const Home = () => {
                         element={
                             <ProtectedRoute>
                                 <AddTransaction/>
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/update-client/:clientId"
+                        element={
+                            <ProtectedRoute>
+                                <ClientUpdate />
                             </ProtectedRoute>
                         }
                     />

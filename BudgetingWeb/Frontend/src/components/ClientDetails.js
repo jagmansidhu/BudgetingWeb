@@ -1,16 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
-import './Transactions.css';  // Importing the CSS file
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
 const ClientDetails = () => {
     const { clientId } = useParams();
-    const navigate = useNavigate();
     const [client, setClient] = useState(null);
-    const [transactions, setTransactions] = useState([]);
-    const [filteredTransactions, setFilteredTransactions] = useState([]);
-    const [totalAmount, setTotalAmount] = useState(0);
-    const [error, setError] = useState('');
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetchClientDetails();
@@ -18,13 +14,14 @@ const ClientDetails = () => {
 
     const fetchClientDetails = async () => {
         try {
-            const clientResponse = await axios.get(`http://localhost:8080/api/clients/get/${clientId}`);
+            const clientResponse = await axios.get(
+                `http://localhost:8080/api/clients/get/${clientId}`
+            );
             setClient(clientResponse.data);
-
-            setError('');
+            setError("");
         } catch (err) {
             setClient(null);
-            setError('Error fetching client details: ' + err.message);
+            setError("Error fetching client details: " + err.message);
         }
     };
 
@@ -34,9 +31,20 @@ const ClientDetails = () => {
             {client && (
                 <div className="detail-container">
                     <div className="client-info">
-                        <h4 className="heading"><strong>Client Details - </strong></h4>
-                        <h4 className="heading"><strong>Name:</strong> {client.name}</h4>
-                        <h4 className="heading"><strong>Email:</strong> {client.email}</h4>
+                        <h4 className="heading">
+                            <strong>Client Details - </strong>
+                        </h4>
+                        <h4 className="heading">
+                            <strong>Name:</strong> {client.name}
+                        </h4>
+                        <h4 className="heading">
+                            <strong>Email:</strong> {client.email}
+                        </h4>
+                    </div>
+                    <div>
+                        <Link to={`/update-client/${clientId}`}>
+                            <button className="button">Update</button>
+                        </Link>
                     </div>
                 </div>
             )}

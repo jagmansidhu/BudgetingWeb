@@ -37,64 +37,64 @@ const RegisterComponent = () => {
   };
 
   return (
-    <div>
-      <br /> <br />
-      <div className="register-container">
-        <div className="row">
-          <h2>Register</h2>
-          <div>
-            <form onSubmit={handleRegistrationForm}>
-              <div className="label-container">
-                <label>Name</label>
-                <input
-                  type="text"
-                  name="name"
-                  className="form-control"
-                  placeholder="Enter name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-                {errors.name && <p style={{ color: "red" }}>{errors.name}</p>}
-              </div>
+      <div>
+        <br /> <br />
+        <div className="register-container">
+          <div className="row">
+            <h2>Register</h2>
+            <div>
+              <form onSubmit={handleRegistrationForm}>
+                <div className="label-container">
+                  <label>Name</label>
+                  <input
+                      type="text"
+                      name="name"
+                      className="form-control"
+                      placeholder="Enter name"
+                      value={name}
+                      onChange={(e) => setName(e.target.value)}
+                  />
+                  {errors.name && <p style={{ color: "red" }}>{errors.name}</p>}
+                </div>
 
-              <div className="label-container">
-                <label>Email</label>
-                <input
-                  type="text"
-                  name="email"
-                  className="form-control"
-                  placeholder="Enter email address"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
-              </div>
+                <div className="label-container">
+                  <label>Email</label>
+                  <input
+                      type="text"
+                      name="email"
+                      className="form-control"
+                      placeholder="Enter email address"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                  />
+                  {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
+                </div>
 
-              <div className="label-container">
-                <label>Password</label>
-                <input
-                  type="password"
-                  name="password"
-                  className="form-control"
-                  placeholder="Enter password"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                />
-                {errors.password && (
-                  <p style={{ color: "red" }}>{errors.password}</p>
+                <div className="label-container">
+                  <label>Password</label>
+                  <input
+                      type="password"
+                      name="password"
+                      className="form-control"
+                      placeholder="Enter password"
+                      value={password}
+                      onChange={(e) => setPassword(e.target.value)}
+                  />
+                  {errors.password && (
+                      <p style={{ color: "red" }}>{errors.password}</p>
+                  )}
+                </div>
+                {errors.general && (
+                    <p style={{ color: "red" }}>{errors.general}</p>
                 )}
-              </div>
-              {errors.general && (
-                <p style={{ color: "red" }}>{errors.general}</p>
-              )}
-              <button className="button" type="submit">
-                Register
-              </button>
-            </form>
+                <button className="button" type="submit">
+                  Register
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
