@@ -1,14 +1,11 @@
 In development
 To Do:
 - Summaries page
-  -Add metrics by month
+  - Add metrics by month
 - Transactions page
   - Add sort by category
   - Improve visibilty
 - Client details page
-  - Name change
-  - Email change
-  - Password change
   - Ui improvements
 - Deploy to web
 
