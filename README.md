@@ -7,6 +7,7 @@ To Do:
   - Improve visibilty
 - Client details page
   - Ui improvements
+  - http://64.23.167.161/login
 - Deploy to web
 
 Preview of current revision of Website
