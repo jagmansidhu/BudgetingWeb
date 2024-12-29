@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import {useParams, useNavigate} from 'react-router-dom';
+import {useNavigate, useParams} from 'react-router-dom';
 import './Transactions.css';
 
 const Transactions = () => {
@@ -11,35 +11,33 @@ const Transactions = () => {
     const [filteredTransactions, setFilteredTransactions] = useState([]);
     const [totalAmount, setTotalAmount] = useState(0);
     const [selectedMonth, setSelectedMonth] = useState('');
-    const [category, setCategory] = useState('');
     const [error, setError] = useState('');
 
     useEffect(() => {
+        const fetchClientDetails = async () => {
+            try {
+                const clientResponse = await axios.get(`http://localhost:8080/api/clients/get/${clientId}`);
+                setClient(clientResponse.data);
+
+                const transactionsResponse = await axios.get(`http://localhost:8080/api/transactions/${clientId}`);
+                const transactionsData = transactionsResponse.data;
+                setTransactions(transactionsData);
+                setFilteredTransactions(transactionsData);
+
+                const total = transactionsData.reduce((sum, transaction) => sum + transaction.amount, 0);
+                setTotalAmount(total);
+
+                setError('');
+            } catch (err) {
+                setClient(null);
+                setTransactions([]);
+                setFilteredTransactions([]);
+                setTotalAmount(0);
+                setError('Error fetching client details: ' + err.message);
+            }
+        };
         fetchClientDetails();
     }, [clientId]);
-
-    const fetchClientDetails = async () => {
-        try {
-            const clientResponse = await axios.get(`http://localhost:8080/api/clients/get/${clientId}`);
-            setClient(clientResponse.data);
-
-            const transactionsResponse = await axios.get(`http://localhost:8080/api/transactions/${clientId}`);
-            const transactionsData = transactionsResponse.data;
-            setTransactions(transactionsData);
-            setFilteredTransactions(transactionsData);
-
-            const total = transactionsData.reduce((sum, transaction) => sum + transaction.amount, 0);
-            setTotalAmount(total);
-
-            setError('');
-        } catch (err) {
-            setClient(null);
-            setTransactions([]);
-            setFilteredTransactions([]);
-            setTotalAmount(0);
-            setError('Error fetching client details: ' + err.message);
-        }
-    };
 
     const handleMonthChange = (event) => {
         const month = event.target.value;
@@ -83,7 +81,7 @@ const Transactions = () => {
     const handleAddTransactionClick = () => {
         navigate(`/add-transaction/${clientId}`);
     };
-    
+
 
     return (
         <div className="transactions-container">

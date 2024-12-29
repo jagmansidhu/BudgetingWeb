@@ -10,7 +10,6 @@
     "react-router-dom": "^7.1.0",
     "react-scripts": "5.0.1"
   },
-  "proxy": "http://backend:8080/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

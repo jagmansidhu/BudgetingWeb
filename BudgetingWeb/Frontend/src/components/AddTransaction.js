@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
-import { useParams, useNavigate } from 'react-router-dom';
+import {useParams, useNavigate} from 'react-router-dom';
 import "./AddTransaction.css"
 
 const AddTransaction = () => {
-    const { clientId } = useParams();
+    const {clientId} = useParams();
     const navigate = useNavigate();
     const [amount, setAmount] = useState('');
     const [comment, setComment] = useState('');

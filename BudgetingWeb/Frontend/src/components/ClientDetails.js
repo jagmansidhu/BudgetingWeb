@@ -1,29 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import {Link, useNavigate, useParams} from "react-router-dom";
 
 const ClientDetails = () => {
-    const { clientId } = useParams();
+    const {clientId} = useParams();
     const [client, setClient] = useState(null);
     const [error, setError] = useState("");
-    const navigate = useNavigate();
 
     useEffect(() => {
+        const fetchClientDetails = async () => {
+            try {
+                const clientResponse = await axios.get(
+                    `http://localhost:8080/api/clients/get/${clientId}`
+                );
+                setClient(clientResponse.data);
+                setError("");
+            } catch (err) {
+                setClient(null);
+                setError("Error fetching client details: " + err.message);
+            }
+        };
         fetchClientDetails();
     }, [clientId]);
-
-    const fetchClientDetails = async () => {
-        try {
-            const clientResponse = await axios.get(
-                `http://localhost:8080/api/clients/get/${clientId}`
-            );
-            setClient(clientResponse.data);
-            setError("");
-        } catch (err) {
-            setClient(null);
-            setError("Error fetching client details: " + err.message);
-        }
-    };
 
     return (
         <div className="ClientDetails">

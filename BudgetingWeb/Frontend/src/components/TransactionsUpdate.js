@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
-import {useParams, useNavigate, useLocation} from 'react-router-dom';
+import {useLocation, useNavigate, useParams} from 'react-router-dom';
 import './AddTransaction.css';
 
 const TransactionsUpdate = () => {

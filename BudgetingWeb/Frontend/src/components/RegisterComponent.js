@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { registerAPICall } from "./AuthService";
+import React, {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {registerAPICall} from "./AuthService";
 import "./Register.css";
 
 const RegisterComponent = () => {

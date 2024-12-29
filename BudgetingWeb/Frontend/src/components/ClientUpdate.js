@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
-import { useParams, useNavigate } from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
 import "./ClientUpdate.css"; // Make sure to import the CSS file
 
 const UpdateClient = () => {
-    const { clientId } = useParams();
+    const {clientId} = useParams();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -13,21 +13,20 @@ const UpdateClient = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
+        const fetchClientDetails = async () => {
+            try {
+                const clientResponse = await axios.get(
+                    `http://localhost:8080/api/clients/get/${clientId}`
+                );
+                setName(clientResponse.data.name);
+                setEmail(clientResponse.data.email);
+                setError("");
+            } catch (err) {
+                setError("Error fetching client details: " + err.message);
+            }
+        };
         fetchClientDetails();
     }, [clientId]);
-
-    const fetchClientDetails = async () => {
-        try {
-            const clientResponse = await axios.get(
-                `http://localhost:8080/api/clients/get/${clientId}`
-            );
-            setName(clientResponse.data.name);
-            setEmail(clientResponse.data.email);
-            setError("");
-        } catch (err) {
-            setError("Error fetching client details: " + err.message);
-        }
-    };
 
     const validateEmail = (email) => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -44,14 +43,14 @@ const UpdateClient = () => {
         setErrors({});
 
         if (!validateEmail(email)) {
-            setErrors({ email: "Invalid email format" });
+            setErrors({email: "Invalid email format"});
             return;
         }
 
         try {
             const response = await axios.put(
                 `http://localhost:8080/api/clients/update/email/${clientId}`,
-                { email }
+                {email}
             );
             console.log("Email update successful:", response.data);
             navigate(`/client-details/${clientId}`); // Redirect back to the details page
@@ -83,7 +82,7 @@ const UpdateClient = () => {
         try {
             const response = await axios.put(
                 `http://localhost:8080/api/clients/update/password/${clientId}`,
-                { password }
+                {password}
             );
             console.log("Password update successful:", response.data);
             navigate(`/client-details/${clientId}`); // Redirect back to the details page
@@ -102,7 +101,7 @@ const UpdateClient = () => {
 
     return (
         <div>
-            <br /> <br />
+            <br/> <br/>
             <div className="client-details-container">
                 <div className="row">
                     <h2>Update Client Details</h2>
@@ -118,13 +117,13 @@ const UpdateClient = () => {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
-                                {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
+                                {errors.email && <p style={{color: "red"}}>{errors.email}</p>}
                             </div>
                             <button className="button" type="submit">
                                 Update Email
                             </button>
                         </form>
-                        <form onSubmit={handlePasswordChange} style={{ marginTop: "20px" }}>
+                        <form onSubmit={handlePasswordChange} style={{marginTop: "20px"}}>
                             <div className="label-container">
                                 <label>Password</label>
                                 <input
@@ -136,7 +135,7 @@ const UpdateClient = () => {
                                     onChange={(e) => setPassword(e.target.value)}
                                 />
                                 {errors.password && (
-                                    <p style={{ color: "red" }}>{errors.password}</p>
+                                    <p style={{color: "red"}}>{errors.password}</p>
                                 )}
                             </div>
                             <button className="button" type="submit">
@@ -144,7 +143,7 @@ const UpdateClient = () => {
                             </button>
                         </form>
                         {errors.general && (
-                            <p style={{ color: "red", marginTop: "20px" }}>
+                            <p style={{color: "red", marginTop: "20px"}}>
                                 {errors.general}
                             </p>
                         )}
