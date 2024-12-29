@@ -14,4 +14,3 @@ Need to add .env file in main folder with database Username and Password
 
 Need to add .secrets.properties file in Backend/src/resources with database Username and Password
 
-May need maven wrapper cmd: mvn -N io.takari:maven:wrapper
