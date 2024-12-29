@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
+import "./ClientDetails.css"
 
 const ClientDetails = () => {
     const {clientId} = useParams();
@@ -28,10 +29,7 @@ const ClientDetails = () => {
             {error && <p>{error}</p>}
             {client && (
                 <div className="detail-container">
-                    <div className="client-info">
-                        <h4 className="heading">
-                            <strong>Client Details - </strong>
-                        </h4>
+                    <div>
                         <h4 className="heading">
                             <strong>Name:</strong> {client.name}
                         </h4>
@@ -41,7 +39,7 @@ const ClientDetails = () => {
                     </div>
                     <div>
                         <Link to={`/update-client/${clientId}`}>
-                            <button className="button">Update</button>
+                            <button className="client-info">Update</button>
                         </Link>
                     </div>
                 </div>

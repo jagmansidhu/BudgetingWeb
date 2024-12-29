@@ -3,7 +3,7 @@ body {
     background-color: white;
 }
 
-label{
+.label{
     text-align: left;
 }
 
@@ -17,7 +17,7 @@ label{
 
 .login-container {
     margin: auto;
-    margin-top: 150px;
+    margin-top: 100px;
     width: 25%;
     /*border: 3px solid;*/
     padding: 10px;
@@ -46,7 +46,7 @@ button:hover {
 
 
 /* Full-width inputs */
-input[type=text], input[type=password] {
+.input[type=text], .input[type=password] {
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;

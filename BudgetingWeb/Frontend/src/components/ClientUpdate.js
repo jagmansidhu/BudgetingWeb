@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {useNavigate, useParams} from "react-router-dom";
-import "./ClientUpdate.css"; // Make sure to import the CSS file
+import "./ClientUpdate.css";
 
 const UpdateClient = () => {
     const {clientId} = useParams();
@@ -103,11 +103,11 @@ const UpdateClient = () => {
         <div>
             <br/> <br/>
             <div className="client-details-container">
-                <div className="row">
-                    <h2>Update Client Details</h2>
-                    <div className="update-form">
+                <div>
+                    <h2>Update Details</h2>
+                    <div className="form-update">
                         <form onSubmit={handleEmailChange}>
-                            <div className="label-container">
+                            <div className="email-container">
                                 <label>Email</label>
                                 <input
                                     type="email"
@@ -119,15 +119,15 @@ const UpdateClient = () => {
                                 />
                                 {errors.email && <p style={{color: "red"}}>{errors.email}</p>}
                             </div>
-                            <button className="button" type="submit">
+                            <button className="botton" type="submit">
                                 Update Email
                             </button>
                         </form>
                         <form onSubmit={handlePasswordChange} style={{marginTop: "20px"}}>
-                            <div className="label-container">
+                            <div className="password-container">
                                 <label>Password</label>
                                 <input
-                                    type="password"
+                                    type="pword"
                                     name="password"
                                     className="form-control"
                                     placeholder="Enter new password"
@@ -138,7 +138,7 @@ const UpdateClient = () => {
                                     <p style={{color: "red"}}>{errors.password}</p>
                                 )}
                             </div>
-                            <button className="button" type="submit">
+                            <button className="botton" type="submit">
                                 Update Password
                             </button>
                         </form>

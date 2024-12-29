@@ -87,7 +87,7 @@ const RegisterComponent = () => {
                 {errors.general && (
                     <p style={{ color: "red" }}>{errors.general}</p>
                 )}
-                <button className="button" type="submit">
+                <button className="regbutton" type="submit">
                   Register
                 </button>
               </form>
