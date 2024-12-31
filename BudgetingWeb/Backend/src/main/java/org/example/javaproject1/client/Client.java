@@ -22,8 +22,6 @@ public class Client {
     private Long id;
     private String name;
     private String email;
-
-    // PASSWORD FOR FUTURE USE
     private String password;
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL, orphanRemoval = true)
