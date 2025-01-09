@@ -1,14 +1,16 @@
-In development
-To Do:
+Preview of current revision of Website:
+
+
+  https://github.com/user-attachments/assets/b08fbb32-b409-42a1-963b-290ce6843528
+
+Future Updates:
 - Summaries page
   - Add metrics by month
 - Transactions page
   - Add sort by category
-  - Improve visibilty
-- Deploy to web
+- Improve Overall UI, make cleaner
 
-Preview of current revision of Website:
-  https://github.com/user-attachments/assets/b08fbb32-b409-42a1-963b-290ce6843528
+When running:
 
 Need to add .env file in main folder with database Username and Password
 
