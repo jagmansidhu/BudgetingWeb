@@ -19,6 +19,3 @@ Future Updates:
 - Transactions page
   - Add sort by category
 - Improve Overall UI, make cleaner
-
-
-
