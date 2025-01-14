@@ -64,20 +64,21 @@ public class ClientController {
 
         String email = updates.get("email");
 
-        clientService.updateEmail(clientId,email);
+        clientService.updateEmail(clientId, email);
         Client updatedClient = clientRepository.findById(clientId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found"));
 
         return ResponseEntity.ok(updatedClient);
 
     }
+
     @PutMapping(path = "/update/password/{clientId}")
     public ResponseEntity<Client> updatePassword(@PathVariable("clientId") Long clientId,
                                                  @RequestBody Map<String, String> updates) {
 
         String password = updates.get("password");
 
-        clientService.updatePassword(clientId,password);
+        clientService.updatePassword(clientId, password);
         Client updatedClient = clientRepository.findById(clientId)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Client not found"));
 

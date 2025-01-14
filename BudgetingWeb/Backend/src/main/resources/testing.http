@@ -1,0 +1,4 @@
+### GET request to example server
+POST https://localhost:3000/api/clients
+
+###

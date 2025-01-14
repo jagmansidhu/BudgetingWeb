@@ -1,11 +1,25 @@
-FROM node:23-alpine3.21
+#FROM node:20-alpine
+#
+#COPY package.json package-lock.json ./
+#
+#RUN npm install
+#
+#COPY . ./
+#
+##RUN npm run build
+#
+#CMD ["npm", "start"]
 
-COPY package.json package-lock.json .
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY package.json package-lock.json ./
 
 RUN npm install
 
-COPY . .
+COPY ./ ./
 
-#RUN npm run build
+EXPOSE 8080
 
 CMD ["npm", "start"]
