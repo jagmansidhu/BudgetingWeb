@@ -35,53 +35,44 @@ const LoginComponent = () => {
         <div>
             <div className="login-container">
                 <div className="row">
-                    <div>
-                        <div>
-                            <h2>Login</h2>
+                    <h2>Login</h2>
+                    <form onSubmit={handleLoginForm}>
+                        <div className="label-container">
+                            <label>Email</label>
+                            <input
+                                type="text"
+                                name="email"
+                                className="form-control"
+                                placeholder="Enter email"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
                         </div>
-                        <div>
-                            <form>
-                                <div className="label-container">
-                                    <label>Email</label>
-                                    <div>
-                                        <input
-                                            type='text'
-                                            name='email'
-                                            className="form-control"
-                                            placeholder='Enter email'
-                                            value={email}
-                                            onChange={(e) => setEmail(e.target.value)}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="label-container">
-                                    <label>Password</label>
-                                    <div>
-                                        <input
-                                            type='password'
-                                            name='password'
-                                            className="form-control"
-                                            placeholder='Enter password'
-                                            value={password}
-                                            onChange={(e) => setPassword(e.target.value)}
-                                        />
-                                    </div>
-                                </div>
-                                {errorMessage && <p className="error-message">{errorMessage}</p>}
-                                <div>
-                                    <button className="logbutton" onClick={handleLoginForm}>Login</button>
-                                </div>
-                                <div>
-                                    <button className="logbutton" type='button' onClick={handleRegisterRedirect}>
-                                        Don't have an account? Register here
-                                    </button>
-                                </div>
-                            </form>
+                        <div className="label-container">
+                            <label>Password</label>
+                            <input
+                                type="password"
+                                name="password"
+                                className="form-control"
+                                placeholder="Enter password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
                         </div>
-                    </div>
+                        {errorMessage && <p className="error-message">{errorMessage}</p>}
+                        <button className="logbutton">Login</button>
+                        <button
+                            className="logbutton"
+                            type="button"
+                            onClick={handleRegisterRedirect}
+                        >
+                            Don't have an account?
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
+
     );
 };
 

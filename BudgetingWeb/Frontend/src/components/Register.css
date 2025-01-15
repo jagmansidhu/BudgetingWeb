@@ -2,42 +2,39 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
-.label{
+.label {
     text-align: left;
 }
 
-.h2{
+.h2 {
     margin-top: -1px;
 }
 
-.row{
+.row {
     margin: auto;
     width: auto;
     padding: 30px;
 }
 
-.label-container{
-    /* border: 3px solid white;*/
+.label-container {
     line-height: 50px;
-
 }
 
 .register-container, .login-container {
     margin: auto;
     margin-top: 45px;
     width: 25%;
-    /*border: 3px solid;*/
     padding: 10px;
     text-align: left;
     font-size: 25px;
-    background-color: white;
-    color: black;
+    background-color: #050A30;
+    color: #FFFDD0;
     box-shadow: 0 0 10px 5px #d3d2d2;
 }
 
-.regbutton, .logbutton{
+.regbutton, .logbutton {
     border-radius: 1000px;
-    background-color: #333333;
+    background-color: #0000FF;
     color: white;
     padding: 10px;
     margin-top: 30px;
@@ -47,18 +44,23 @@ body {
     font-size: 16px;
 }
 
-/* Add a hover effect for buttons */
-.button:hover {
+/* Hover effect for buttons */
+.regbutton:hover, .logbutton:hover {
     opacity: 0.8;
 }
 
-
 /* Full-width inputs */
-.input[type=text], .input[type=password] {
+.input[type=text], .input[type=password], .form-control {
     width: 100%;
     padding: 12px 20px;
     display: inline-block;
     box-sizing: border-box;
     font-size: 16px;
+}
 
+.error-message {
+    text-align: center;
+    color: red;
+    margin: 0;
+    margin-top: 10px;
 }

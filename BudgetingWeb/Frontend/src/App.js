@@ -13,7 +13,7 @@ import TransactionsUpdate from "./components/TransactionsUpdate";
 import AddTransaction from "./components/AddTransaction";
 import ClientUpdate from "./components/ClientUpdate";
 import ClientDetails from "./components/ClientDetails";
-import FooterComponent from "./components/FooterComponent";
+import './App.css';
 
 
 function App() {
@@ -91,7 +91,6 @@ function App() {
                     />
                 </Routes>
             </div>
-            <FooterComponent/>
         </div>
     );
 }
