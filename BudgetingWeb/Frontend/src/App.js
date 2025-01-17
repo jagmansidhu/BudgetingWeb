@@ -42,18 +42,18 @@ function App() {
                     <Route path='/login' element={<LoginComponent/>}/>
                     <Route exact path="/ping" element={<PingComponent/>}/>
                     <Route
-                        path="/transactions/summary/:clientId"
-                        element={
-                            <ProtectedRoute>
-                                <SummaryComponent/>
-                            </ProtectedRoute>
-                        }
-                    />
-                    <Route
                         path="/transactions/:clientId"
                         element={
                             <ProtectedRoute>
                                 <Transactions/>
+                            </ProtectedRoute>
+                        }
+                    />
+                    <Route
+                        path="/summary/:clientId"
+                        element={
+                            <ProtectedRoute>
+                                <SummaryComponent/>
                             </ProtectedRoute>
                         }
                     />

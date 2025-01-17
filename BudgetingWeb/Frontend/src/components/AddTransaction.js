@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import {useParams, useNavigate} from 'react-router-dom';
-import "./Transaction.css"
+import "./TransactionsUpdate.css"
 
 const AddTransaction = () => {
     const {clientId} = useParams();
@@ -40,10 +40,18 @@ const AddTransaction = () => {
             <form onSubmit={handleSubmit}>
                 <div className="each">
                     <label>Category</label>
-                    <input type="text" value={category} onChange={(e) => setCategory(e.target.value)}/>
+                    {/*<input type="text" value={category} onChange={(e) => setCategory(e.target.value)}/>*/}
+                    <select value={category} onChange={(e) => setCategory(e.target.value)}>
+                        <option value="">Select Category</option>
+                        <option value="Grocery">Grocery</option>
+                        <option value="Dining">Dining</option>
+                        <option value="Fun">Fun</option>
+                        <option value="Health">Health</option>
+                        <option value="Misc">Misc</option>
+                    </select>
                 </div>
                 <div className="each">
-                    <label>Amount</label>
+                <label>Amount</label>
                     <input type="text" value={amount} onChange={(e) => setAmount(e.target.value)}/>
                 </div>
                 <div className="each">

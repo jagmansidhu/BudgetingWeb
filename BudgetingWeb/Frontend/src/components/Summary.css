@@ -1,7 +1,8 @@
-.heading1 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 50vh;
-    font-family: Arial, Helvetica, sans-serif;
+.summary-container {
+    margin: 20px;
+}
+
+.chart-container {
+    margin: 20px auto;
+    max-width: 600px;
 }

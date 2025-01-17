@@ -12,6 +12,8 @@ const Transactions = () => {
     const [totalAmount, setTotalAmount] = useState(0);
     const [selectedMonth, setSelectedMonth] = useState('');
     const [error, setError] = useState('');
+    const [selectedCategory, setSelectedCategory] = useState('');
+
 
     useEffect(() => {
         const fetchClientDetails = async () => {
@@ -82,14 +84,39 @@ const Transactions = () => {
         navigate(`/add-transaction/${clientId}`);
     };
 
+    const handleCategoryChange = (event) => {
+        const category = event.target.value;
+        setSelectedCategory(category);
+        filterTransactionsByCategory(category);
+    };
+
+    const filterTransactionsByCategory = (category) => {
+        let filtered = transactions;
+
+        if (category) {
+            filtered = transactions.filter(transaction => transaction.category === category);
+        }
+
+        if (selectedMonth) {
+            filtered = filtered.filter(transaction => {
+                const transactionDate = new Date(transaction.date);
+                return transactionDate.getMonth() === parseInt(selectedMonth, 10);
+            });
+        }
+
+        setFilteredTransactions(filtered);
+
+        const total = filtered.reduce((sum, transaction) => sum + transaction.amount, 0);
+        setTotalAmount(total);
+    };
 
     return (
         <div className="transactions-container">
             {error && <p>{error}</p>}
             <div className="actions-container">
-                <button className="transaction-button" onClick={handleAddTransactionClick}>Add Transaction</button>
+                <button className="addTransaction-button" onClick={handleAddTransactionClick}>Add Transaction</button>
                 <div className="filter-container">
-                    <select className="transaction-button" id="month" value={selectedMonth}
+                    <select className="month-button" id="month" value={selectedMonth}
                             onChange={handleMonthChange}>
                         <option value="">All Months</option>
                         <option value="0">January</option>
@@ -104,6 +131,19 @@ const Transactions = () => {
                         <option value="9">October</option>
                         <option value="10">November</option>
                         <option value="11">December</option>
+                    </select>
+                    <select
+                        className="filter-button"
+                        id="category"
+                        value={selectedCategory}
+                        onChange={handleCategoryChange}
+                    >
+                        <option value="">All Categories</option>
+                        {[...new Set(transactions.map(transaction => transaction.category))].map((category, index) => (
+                            <option key={index} value={category}>
+                                {category}
+                            </option>
+                        ))}
                     </select>
                 </div>
             </div>

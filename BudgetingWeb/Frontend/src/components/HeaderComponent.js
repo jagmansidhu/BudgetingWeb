@@ -17,7 +17,7 @@ const HeaderComponent = ({isLoggedIn, handleLogout}) => {
 
     const handleSummaryRedirect = () => {
         const clientId = localStorage.getItem('userId');
-        navigate(`/transactions/summary/${clientId}`);
+        navigate(`/summary/${clientId}`);
     };
 
     return (
