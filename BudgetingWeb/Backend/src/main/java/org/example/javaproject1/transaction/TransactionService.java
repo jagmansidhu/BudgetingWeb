@@ -37,6 +37,8 @@ public class TransactionService {
         return client.getTransactions();
     }
 
+
+
     public void remTransactionById(Long clientId, Long transactionId) {
         Client client = clientRepository.findById(clientId)
                 .orElseThrow(() -> new IllegalStateException("Client with id " + clientId + " does not exist"));
@@ -55,5 +57,12 @@ public class TransactionService {
         transaction.setDate(date);
         transaction.setCategory(category);
         return transactionRepository.save(transaction);
+    }
+
+    public int getAmount(Long clientId) {
+        Transaction transaction = transactionRepository.findById(clientId)
+                .orElseThrow(() ->
+                        new IllegalStateException("Client with id " + clientId + " does not exist"));
+        return transaction.getAmount();
     }
 }

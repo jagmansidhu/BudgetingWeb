@@ -1,4 +1,4 @@
-/*
+
 package org.example.javaproject1.client;
 
 import org.example.javaproject1.transaction.Transaction;
@@ -33,4 +33,3 @@ public class ClientConfig {
         };
     }
 }
-*/
