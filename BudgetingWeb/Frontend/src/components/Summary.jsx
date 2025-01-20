@@ -48,7 +48,6 @@ const Summary = () => {
             x: {
                 title: {
                     display: true,
-                    text: 'Month',
                 },
             },
             y: {

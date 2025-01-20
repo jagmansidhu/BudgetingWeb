@@ -1,14 +1,14 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 25px;
 
 }
 
 .detail-container{
     display: flex;
     flex-direction: column;
-    justify-content: left;
-    width: 75%;
-    margin-left: 50px;
+    justify-content: center;
+    align-items: center;
 }
 
 .button{
@@ -18,13 +18,13 @@ body {
 }
 
 .client-info{
-    border-radius: 1000px;
+    border-radius: 10px;
+    button-height: 10px;
     background-color: #333333;
     color: white;
     padding: 10px;
     margin-top: 10px;
     border: none;
     cursor: pointer;
-    width: 10%;
     font-size: 16px;
 }

@@ -133,7 +133,7 @@ const Transactions = () => {
                         <option value="11">December</option>
                     </select>
                     <select
-                        className="filter-button"
+                        className="category-button"
                         id="category"
                         value={selectedCategory}
                         onChange={handleCategoryChange}

@@ -2,7 +2,7 @@ import React from 'react';
 import {NavLink, useNavigate} from 'react-router-dom';
 import './Header.css';
 
-const HeaderComponent = ({isLoggedIn, handleLogout}) => {
+const Header = ({isLoggedIn, handleLogout}) => {
     const navigate = useNavigate();
 
     const handleTransactionsRedirect = () => {
@@ -53,4 +53,4 @@ const HeaderComponent = ({isLoggedIn, handleLogout}) => {
     );
 };
 
-export default HeaderComponent;
+export default Header;

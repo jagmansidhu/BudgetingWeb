@@ -3,7 +3,7 @@ import {useNavigate} from 'react-router-dom';
 import {loginAPICall} from './AuthService';
 import './Register.css';
 
-const LoginComponent = () => {
+const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
@@ -76,4 +76,4 @@ const LoginComponent = () => {
     );
 };
 
-export default LoginComponent;
+export default Login;

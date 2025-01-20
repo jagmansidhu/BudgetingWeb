@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from 'react';
 
 
-import HeaderComponent from "./components/HeaderComponent";
+import Header from "./components/Header";
 import {Route, Routes, useNavigate} from "react-router-dom";
-import LoginComponent from "./components/LoginComponent";
-import RegisterComponent from "./components/RegisterComponent";
-import PingComponent from "./components/PingComponent";
-import ProtectedRoute from "./components/ProtectedRoute";
-import SummaryComponent from "./components/SummaryComponent";
+import Login from "./components/Login";
+import Register from "./components/Register";
+// import Ping from "./components/Ping";
+import Protected from "./components/Protected";
+import SummaryComponent from "./components/Summary";
 import Transactions from "./components/Transactions";
 import TransactionsUpdate from "./components/TransactionsUpdate";
 import AddTransaction from "./components/AddTransaction";
@@ -34,59 +34,59 @@ function App() {
 
     return (
         <div>
-            <HeaderComponent isLoggedIn={isLoggedIn} handleLogout={handleLogout}/>
+            <Header isLoggedIn={isLoggedIn} handleLogout={handleLogout}/>
             <div>
                 <Routes>
-                    <Route exact path="/" element={<LoginComponent/>}/>
-                    <Route path="/register" element={<RegisterComponent/>}/>
-                    <Route path='/login' element={<LoginComponent/>}/>
-                    <Route exact path="/ping" element={<PingComponent/>}/>
+                    <Route exact path="/" element={<Login/>}/>
+                    <Route path="/register" element={<Register/>}/>
+                    <Route path='/login' element={<Login/>}/>
+                    {/*<Route exact path="/ping" element={<Ping/>}/>*/}
                     <Route
                         path="/transactions/:clientId"
                         element={
-                            <ProtectedRoute>
+                            <Protected>
                                 <Transactions/>
-                            </ProtectedRoute>
+                            </Protected>
                         }
                     />
                     <Route
                         path="/summary/:clientId"
                         element={
-                            <ProtectedRoute>
+                            <Protected>
                                 <SummaryComponent/>
-                            </ProtectedRoute>
+                            </Protected>
                         }
                     />
                     <Route
                         path="/update-transaction/:clientId/:transactionId"
                         element={
-                            <ProtectedRoute>
+                            <Protected>
                                 <TransactionsUpdate/>
-                            </ProtectedRoute>
+                            </Protected>
                         }
                     />
                     <Route
                         path="/add-transaction/:clientId"
                         element={
-                            <ProtectedRoute>
+                            <Protected>
                                 <AddTransaction/>
-                            </ProtectedRoute>
+                            </Protected>
                         }
                     />
                     <Route
                         path="/update-client/:clientId"
                         element={
-                            <ProtectedRoute>
+                            <Protected>
                                 <ClientUpdate/>
-                            </ProtectedRoute>
+                            </Protected>
                         }
                     />
                     <Route
                         path="/client-details/:clientId"
                         element={
-                            <ProtectedRoute>
+                            <Protected>
                                 <ClientDetails/>
-                            </ProtectedRoute>
+                            </Protected>
                         }
                     />
                 </Routes>
