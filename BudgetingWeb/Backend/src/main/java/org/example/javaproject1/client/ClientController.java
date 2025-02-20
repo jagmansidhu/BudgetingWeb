@@ -56,6 +56,11 @@ public class ClientController {
         clientService.deleteClient(clientId);
     }
 
+//    @PutMapping(path="{clientId}")
+//    public void updateClient(@PathVariable("clientId") Long clientId, @RequestBody Client client) {
+//
+//
+//    }
 
     @PutMapping(path = "/update/email/{clientId}")
     public ResponseEntity<Client> updateEmail(@PathVariable("clientId") Long clientId,

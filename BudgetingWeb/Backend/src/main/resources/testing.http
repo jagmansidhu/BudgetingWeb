@@ -1,5 +1,7 @@
 ### GET request to example server
-GET  http://localhost:8080/api/transactions/1/monthlyData
+GET  http://localhost:8080/api/clients/get/1
 
 ###
+
+POST http://localhost:8080/api/clients/login
 
