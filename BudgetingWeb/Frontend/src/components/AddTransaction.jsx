@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
 import axios from 'axios';
 import {useParams, useNavigate} from 'react-router-dom';
-import "./TransactionsUpdate.css"
+import "./TransactionsUpdate.css";
+import apiRoutes from "./config";
+
 
 const AddTransaction = () => {
     const {clientId} = useParams();
@@ -15,7 +17,7 @@ const AddTransaction = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const url = `http://localhost:8080/api/transactions/${clientId}`;
+            const url = `${apiRoutes.transactions}/${clientId}`;
             const transaction = {
                 amount: parseInt(amount, 10),
                 comment: comment,

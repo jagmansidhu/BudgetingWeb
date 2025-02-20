@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {useLocation, useNavigate, useParams} from 'react-router-dom';
 import './TransactionsUpdate.css';
+import apiRoutes from "./config";
+
 
 const TransactionsUpdate = () => {
     const {clientId, transactionId} = useParams();
@@ -26,7 +28,7 @@ const TransactionsUpdate = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const url = `http://localhost:8080/api/transactions/${clientId}/update/${transactionId}`;
+            const url = `${apiRoutes.transactions}/${clientId}/update/${transactionId}`;
             console.log("Updating transaction with URL:", url);
             const transaction = {
                 amount: parseInt(amount, 10),

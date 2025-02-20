@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {Link, useNavigate, useParams} from "react-router-dom";
 import "./ClientDetails.css"
+import apiRoutes from "./config";
 
 const ClientDetails = () => {
     const {clientId} = useParams();
@@ -12,7 +13,7 @@ const ClientDetails = () => {
         const fetchClientDetails = async () => {
             try {
                 const clientResponse = await axios.get(
-                    `http://localhost:8080/api/clients/get/${clientId}`
+                    `${apiRoutes.clients}/get/${clientId}`
                 );
                 setClient(clientResponse.data);
                 setError("");

@@ -2,6 +2,8 @@ import React, {useEffect, useState} from "react";
 import axios from "axios";
 import {useNavigate, useParams} from "react-router-dom";
 import "./ClientUpdate.css";
+import apiRoutes from "./config";
+
 
 const UpdateClient = () => {
     const {clientId} = useParams();
@@ -16,7 +18,7 @@ const UpdateClient = () => {
         const fetchClientDetails = async () => {
             try {
                 const clientResponse = await axios.get(
-                    `http://localhost:8080/api/clients/get/${clientId}`
+                    `${apiRoutes.clients}/get/${clientId}`
                 );
                 setName(clientResponse.data.name);
                 setEmail(clientResponse.data.email);
@@ -49,7 +51,7 @@ const UpdateClient = () => {
 
         try {
             const response = await axios.put(
-                `http://localhost:8080/api/clients/update/email/${clientId}`,
+                `${API_BASE_URL}/update/email/${clientId}`,
                 {email}
             );
             console.log("Email update successful:", response.data);
@@ -81,7 +83,7 @@ const UpdateClient = () => {
 
         try {
             const response = await axios.put(
-                `http://localhost:8080/api/clients/update/password/${clientId}`,
+                `${apiRoutes.clients}/update/password/${clientId}`,
                 {password}
             );
             console.log("Password update successful:", response.data);

@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import {useNavigate, useParams} from 'react-router-dom';
 import './Transactions.css';
+import apiRoutes from "./config";
+
 
 const Transactions = () => {
     const {clientId} = useParams();
@@ -14,14 +16,13 @@ const Transactions = () => {
     const [error, setError] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('');
 
-
     useEffect(() => {
         const fetchClientDetails = async () => {
             try {
-                const clientResponse = await axios.get(`http://localhost:8080/api/clients/get/${clientId}`);
+                const clientResponse = await axios.get(`${apiRoutes.clients}/get/${clientId}`);
                 setClient(clientResponse.data);
 
-                const transactionsResponse = await axios.get(`http://localhost:8080/api/transactions/${clientId}`);
+                const transactionsResponse = await axios.get(`${apiRoutes.transactions}/${clientId}`);
                 const transactionsData = transactionsResponse.data;
                 setTransactions(transactionsData);
                 setFilteredTransactions(transactionsData);
@@ -69,7 +70,7 @@ const Transactions = () => {
 
     const handleDeleteClick = async (transactionId) => {
         try {
-            const url = `http://localhost:8080/api/transactions/${clientId}/delete/${transactionId}`;
+            const url = `${apiRoutes.transactions}/${clientId}/delete/${transactionId}`;
             await axios.delete(url);
             const updatedTransactions = transactions.filter(transaction => transaction.id !== transactionId);
             setTransactions(updatedTransactions);

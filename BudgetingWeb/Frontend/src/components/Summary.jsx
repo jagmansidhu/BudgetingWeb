@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { Bar } from 'react-chartjs-2';
 import 'chart.js/auto';
 import './Summary.css';
+import apiRoutes from "./config";
 
 const Summary = () => {
     const { clientId } = useParams();
@@ -13,7 +14,7 @@ const Summary = () => {
     useEffect(() => {
         const fetchMonthlySummary = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/api/transactions/${clientId}/monthlyData`);
+                const response = await axios.get(`${apiRoutes.transactions}/${clientId}/monthlyData`);
                 setMonthlySummary(response.data);
             } catch (err) {
                 setError('Error fetching summary data: ' + err.message);
