@@ -6,3 +6,4 @@ Preview of current revision of Website:
 
 Future Updates:
 - Improve Overall UI, make cleaner
+- Improve security
